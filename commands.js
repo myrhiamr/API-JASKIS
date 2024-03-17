@@ -1,5 +1,40 @@
+const express = require('express')
+const mongoose = require('mongoose')
+require('dotenv').config()
+const animalController = require('./controllers/animals')
+
+const app = express()
+
+//routes
+app.use('/animals', animalController)
+
+
+// db connection 
+mongoose.connect(process.env.MONGO_URI)
+ .then(() => console.log('DB connected')) 
+ .catch(err => console.error(err));
+
+const PORT = process.env.PORT || 7070
+
+app.listen(PORT, console.log(`listening on port ${PORT}`))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // JASKIS
 // paste the MongoDB commands you use underneath each prompt
+
 
 // GETTING STARTED
 // 1. Create a database called jaskis
